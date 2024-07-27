@@ -7,7 +7,9 @@ local lsp = vim.lsp
 ---------------------
 -- General Keymaps -------------------
 
--- use jk to exit insert mode
+keymap.set("n", "U", "<C-r>", { desc = "Undo last operation" })
+
+-- use jj to exit insert mode
 keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jk" })
 
 -- clear search highlights
