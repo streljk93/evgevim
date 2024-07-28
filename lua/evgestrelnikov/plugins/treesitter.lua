@@ -1,5 +1,8 @@
 return {
 	{
+		"sheerun/vim-polyglot",
+	},
+	{
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufReadPre", "BufNewFile" },
 		build = ":TSUpdate",
@@ -17,7 +20,7 @@ return {
 					additional_vim_regex_highlighting = true,
 				},
 				-- enable indentation
-				indent = { enable = true },
+				indent = { enable = false },
 				-- enable autotagging (w/ nvim-ts-autotag plugin)
 				autotag = {
 					enable = true,

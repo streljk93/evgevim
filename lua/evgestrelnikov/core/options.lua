@@ -1,6 +1,7 @@
 vim.cmd("let g:netrw_liststyle = 3")
 
 vim.g.editorconfig = true
+vim.g.polyglot_disabled = { "vue" } -- polyglot plugin (only for autoindent)
 
 local opt = vim.opt -- for conciseness
 
@@ -13,7 +14,6 @@ opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
 opt.shiftwidth = 2 -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
-opt.smartindent = true
 
 -- line wrapping
 opt.wrap = false -- disable line wrapping
