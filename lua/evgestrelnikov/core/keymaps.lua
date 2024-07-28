@@ -7,8 +7,6 @@ local lsp = vim.lsp
 ---------------------
 -- General Keymaps -------------------
 
-keymap.set("n", "U", "<C-r>", { desc = "Undo last operation" })
-
 -- use jj to exit insert mode
 keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jk" })
 
@@ -30,4 +28,4 @@ keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) 
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
 -- jump
-keymap.set({ "v", "n" }, "<C-p>", "<Plug>(easymotion-s)", { silent = true })
+keymap.set({ "v", "n" }, "<C-;>", "<Plug>(easymotion-s)", { silent = true })
