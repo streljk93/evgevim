@@ -17,8 +17,6 @@ return {
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 		local keymap = vim.keymap -- for conciseness
-		--lua require"telescope.builtin".lsp_definitions({jump_type="vsplit"})<CR>
-		--vim.lsp.buf.definition()
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
