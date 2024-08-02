@@ -9,7 +9,7 @@ return {
 	},
 	config = function()
 		local telescope = require("telescope")
-		local actions = require("telescope.actions")
+		local builtin = require("telescope.builtin")
 
 		telescope.setup({
 			defaults = {
@@ -23,6 +23,19 @@ return {
 
 		telescope.load_extension("fzf")
 
+		function vim.getVisualSelection()
+			vim.cmd('noau normal! "vy"')
+			local text = vim.fn.getreg("v")
+			vim.fn.setreg("v", {})
+
+			text = string.gsub(text, "\n", "")
+			if #text > 0 then
+				return text
+			else
+				return ""
+			end
+		end
+
 		-- set keymaps
 		local keymap = vim.keymap -- for conciseness
 
@@ -31,5 +44,14 @@ return {
 		keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+
+		keymap.set("v", "<leader>ff", function()
+			local text = vim.getVisualSelection()
+			builtin.find_files({ default_text = text })
+		end)
+		keymap.set("v", "<leader>fc", function()
+			local text = vim.getVisualSelection()
+			builtin.live_grep({ default_text = text })
+		end)
 	end,
 }

@@ -2,7 +2,6 @@
 vim.g.mapleader = " "
 
 local keymap = vim.keymap -- for conciseness
-local lsp = vim.lsp
 
 ---------------------
 -- General Keymaps -------------------
@@ -14,11 +13,10 @@ keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jk" })
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- window management
-keymap.set("n", "<leader>wn", "<C-w>w", { desc = "Go to next window" }) -- Go to next window
-keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
-keymap.set("n", "<leader>wh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
-keymap.set("n", "<leader>we", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
-keymap.set("n", "<leader>wx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
+keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
+keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to top window" })
+keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
+keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to bottom window" })
 
 -- tab management
 keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
