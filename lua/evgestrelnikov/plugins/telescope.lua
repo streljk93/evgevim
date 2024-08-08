@@ -41,15 +41,12 @@ return {
 
 		keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
 		keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
+		keymap.set("n", "<leader>fg", "<cmd>Telescope git_status<cr>", { desc = "Fuzzy find git status files" })
 		keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
 
-		keymap.set("v", "<leader>ff", function()
-			local text = vim.getVisualSelection()
-			builtin.find_files({ default_text = text })
-		end)
-		keymap.set("v", "<leader>fc", function()
+		keymap.set("v", "<leader>f", function()
 			local text = vim.getVisualSelection()
 			builtin.live_grep({ default_text = text })
 		end)
@@ -142,5 +139,32 @@ return {
 				end,
 			})
 		end, { noremap = true, silent = true })
+
+		-- Function to search for library usage from package.json
+		-- local function search_library_usage()
+		-- 	local current_line = vim.api.nvim_get_current_line()
+		-- 	local cursor_pos = vim.api.nvim_win_get_cursor(0)
+		-- 	local col = cursor_pos[2]
+		--
+		-- 	local pattern = '"([^"]+)":'
+		-- 	local start_pos, end_pos = 0, 0
+		-- 	for name in current_line:gmatch(pattern) do
+		-- 		start_pos, end_pos = string.find(current_line, '"' .. name .. '":')
+		-- 		if start_pos and col >= start_pos and col <= end_pos then
+		-- 			builtin.live_grep({
+		-- 				default_text = name,
+		-- 				additional_args = function()
+		-- 					return { "--glob", "!node_modules/**", "--glob", "!.git/**", "--glob", "!package-lock.json" }
+		-- 				end,
+		-- 			})
+		-- 			return
+		-- 		end
+		-- 	end
+		--
+		-- 	print("No library found under cursor")
+		-- end
+		--
+		-- -- Keymap to search for library usage
+		-- keymap.set("n", "<leader>pl", search_library_usage, { desc = "Find library usage in project" })
 	end,
 }
